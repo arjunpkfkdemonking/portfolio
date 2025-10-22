@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCA Student Portfolio - Cyber | Red/Black Minimal</title>
+    <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind for Inter font and custom Red/Black colors --><script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-dark': '#000000', // True Black (Background)
+                        'secondary-dark': '#0d0d0d', // Card and Header Background (App Body)
+                        'accent-red': '#FF0000', // Bright Red
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Source Code Pro', 'monospace'],
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- Load Inter font and Source Code Pro font --><link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Source+Code+Pro:wght400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base styling for deep dark theme and app-like container */
+        body {
+            font-family: 'Source Code Pro', monospace;
+            background-color: #000000; /* primary-dark */
+            color: #d1d5db; /* Gray-300 text for console feel */
+            min-height: 100vh;
+        }
+        
+        /* Neon Glow Effect (now Red) */
+        .neon-glow-text {
+            color: #FF0000; /* Updated Color */
+            text-shadow: 0 0 5px #FF0000, 0 0 10px #FF0000, 0 0 20px rgba(255, 0, 0, 0.5); /* Updated Color */
+            transition: all 0.3s;
+        }
+
+        /* Nav Link - Now horizontal tabs */
+        .nav-link {
+            cursor: pointer;
+            padding: 0.5rem 0.75rem; 
+            transition: all 0.2s;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #71717a; /* Zink-500 */
+            border-radius: 0.25rem; 
+        }
+        .nav-link:hover {
+            color: #FF0000; /* accent-red */
+        }
+        .nav-link.active {
+            color: #000000; /* Black text on red background */
+            background-color: #FF0000; /* Neon background on active */
+            box-shadow: 0 0 5px #FF0000; 
+        }
+
+        /* Card Style - Used for sub-sections within the main app container */
+        .card {
+            background-color: #0d0d0d; /* secondary-dark - same as the main app body */
+            border-radius: 0.125rem; 
+            padding: 2rem;
+            box-shadow: 0 0 8px rgba(255, 0, 0, 0.1); 
+            transition: box-shadow 0.3s ease-in-out, border-color 0.3s;
+            border: 1px solid #374151; /* Dark gray border */
+        }
+        .card:hover {
+            border-color: #FF0000; 
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.4); 
+        }
+
+        /* Console Prompt Look */
+        .prompt {
+            color: #FF0000; /* Updated Color */
+        }
+
+        /* Fading Effect for Views */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .view.active-fade {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col bg-primary-dark">
+
+    <!-- Application Window Container (NOW FULL SCREEN) -->
+    <div id="app-container" class="w-full flex flex-col min-h-screen bg-secondary-dark overflow-hidden">
+
+        <!-- Header & Minimal Navigation (App Bar) -->
+        <header class="bg-secondary-dark p-4 border-b border-accent-red/50">
+            <div class="flex justify-between items-center font-mono max-w-6xl mx-auto">
+                <!-- Logo/Identifier -->
+                <div class="flex-shrink-0">
+                    <span class="text-xl font-bold prompt">&gt;_ arjun</span>
+                </div>
+                <!-- Navigation Links (Centered Tabs) -->
+                <nav class="flex space-x-2 text-sm">
+                    <a id="nav-home" class="nav-link active" onclick="showPage('home')">MENU</a>
+                    <a id="nav-about" class="nav-link" onclick="showPage('about')">PROFILE</a>
+                    <a id="nav-certificates" class="nav-link" onclick="showPage('certificates')">CERTIFICATES</a>
+                    <a id="nav-projects" class="nav-link" onclick="showPage('projects')">PROJECTS</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content Area (Scrollable) --><main class="flex-grow w-full p-4 sm:p-8 overflow-y-auto">
+
+            <!-- 1. HOME SECTION (Content is max-width centered) --><section id="page-home" class="view space-y-10 pt-8 max-w-6xl mx-auto">
+                <div class="text-center space-y-4">
+                    <p class="text-lg text-gray-500 font-mono">ACCESS GRANTED</p>
+                    <h1 class="text-5xl sm:text-7xl font-extrabold leading-tight tracking-tighter text-white">
+                        <span class="neon-glow-text block sm:inline">LESS</span> IS MORE
+                    </h1>
+                </div>
+                
+                <!-- Sharing & Persistence Info (Cleaned up) --><div class="card max-w-xl mx-auto p-6 font-mono border-l-4 border-accent-red">
+                    <p class="text-sm text-gray-400 mb-4">
+                        <span class="prompt">guest@terminal:</span> cat /sharing\_info
+                    </p>
+                    
+                    <p class="text-xl leading-relaxed mb-4 font-bold" style="color:#FF69B4;">
+                         &gt;\_araara...... kimi ore ni kyomi arrumdaro
+                    </p>
+                    
+                    <!-- Removed the Portfolio Public ID display block -->
+
+                    <div class="mt-6">
+                        <button onclick="showPage('about')" class="text-sm font-semibold py-2 px-4 transition duration-300 rounded-sm bg-accent-red text-black hover:bg-white">
+                            RUN PROFILE\_EXE
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. ABOUT ME SECTION (Content is max-width centered) --><section id="page-about" class="view hidden space-y-10 pt-8 max-w-6xl mx-auto">
+                <h2 class="text-3xl font-bold text-center neon-glow-text tracking-wider pb-2 border-b border-gray-800">
+                    &lt; PROFILE /&gt;
+                </h2>
+
+                <div class="card max-w-2xl mx-auto space-y-8 font-mono">
+                    
+                    <!-- Profile Edit Form (Hidden by default) -->
+                    <div id="profile-editor" class="card hidden bg-primary-dark/80 p-6 space-y-3 border-accent-red border-2">
+                        <h4 class="text-lg font-bold neon-glow-text">Edit Objective</h4>
+                        <input id="edit-objective" type="text" placeholder="Mission Objective" class="w-full bg-secondary-dark border border-gray-700 p-2 text-white placeholder-gray-500 focus:outline-none focus:border-accent-red focus:shadow-[0_0_5px_rgba(255,0,0,0.5)]">
+                        
+                        <div class="flex space-x-4 pt-2">
+                            <button onclick="saveProfile()" class="flex-1 text-sm font-semibold py-2 transition duration-300 rounded-sm bg-accent-red text-black hover:bg-white">
+                                SAVE
+                            </button>
+                            <button onclick="document.getElementById('profile-editor').classList.add('hidden')" class="flex-1 text-sm font-semibold py-2 transition duration-300 rounded-sm bg-gray-700 text-white hover:bg-gray-600">
+                                CANCEL
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Bio -->
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-xl font-bold mb-2 text-white"><span class="prompt">STATUS:</span> Mission Objective</h3>
+                            <!-- Data injected by JS -->
+                            <p id="profile-objective" class="text-gray-400 leading-relaxed text-sm">Loading profile data...</p>
+                        </div>
+                        <!-- Edit Button -->
+                        <button onclick="showProfileEditor()" class="text-xs text-gray-500 hover:text-accent-red border border-gray-700 hover:border-accent-red px-3 py-1 ml-4 transition duration-200">
+                            EDIT <i class="fas fa-edit ml-1"></i>
+                        </button>
+                    </div>
+
+                    <!-- Skills (Minimal List - Fixed Icons) --><div>
+                        <h3 class="text-xl font-bold mb-3 text-white"><span class="prompt">STATUS:</span> Toolkit</h3>
+                        <!-- Abstract Icons Only -->
+                        <div class="grid grid-cols-3 sm:grid-cols-6 gap-y-6 gap-x-2 text-gray-300 text-sm">
+                            <div class="flex flex-col items-center justify-center">
+                                <i class="fas fa-terminal text-2xl text-accent-red"></i>
+                            </div>
+                            <div class="flex flex-col items-center justify-center">
+                                <i class="fas fa-lock text-2xl text-accent-red"></i>
+                            </div>
+                            <div class="flex flex-col items-center justify-center">
+                                <i class="fas fa-code text-2xl text-accent-red"></i>
+                            </div>
+                            <div class="flex flex-col items-center justify-center">
+                                <i class="fas fa-bug text-2xl text-accent-red"></i>
+                            </div>
+                            <div class="flex flex-col items-center justify-center">
+                                <i class="fas fa-microchip text-2xl text-accent-red"></i>
+                            </div>
+                            <div class="flex flex-col items-center justify-center">
+                                <i class="fas fa-network-wired text-2xl text-accent-red"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. CERTIFICATES SECTION (Now editable and before PROJECTS) --><section id="page-certificates" class="view hidden space-y-10 pt-8 max-w-6xl mx-auto">
+                <h2 class="text-3xl font-bold text-center neon-glow-text tracking-wider pb-2 border-b border-gray-800">
+                    &lt; CERTIFICATES /&gt;
+                </h2>
+
+                <div class="max-w-2xl mx-auto font-mono">
+                    <!-- ADD NEW CERTIFICATE FORM --><div class="card mb-8">
+                        <h3 class="text-xl font-bold mb-4 text-white"><span class="prompt">CMD:</span> ADD\_CERTIFICATE</h3>
+                        <div class="space-y-3">
+                            <input id="new-cert-title" type="text" placeholder="Certificate Title (e.g., CISSP)" class="w-full bg-primary-dark border border-gray-700 p-2 text-white placeholder-gray-500 focus:outline-none focus:border-accent-red focus:shadow-[0_0_5px_rgba(255,0,0,0.5)]">
+                            <input id="new-cert-detail" type="text" placeholder="Detail (e.g., Advanced network security)" class="w-full bg-primary-dark border border-gray-700 p-2 text-white placeholder-gray-500 focus:outline-none focus:border-accent-red focus:shadow-[0_0_5px_rgba(255,0,0,0.5)]">
+                            <input id="new-cert-link" type="url" placeholder="Verification Link (Optional)" class="w-full bg-primary-dark border border-gray-700 p-2 text-white placeholder-gray-500 focus:outline-none focus:border-accent-red focus:shadow-[0_0_5px_rgba(255,0,0,0.5)]">
+                            <button onclick="addCertificate()" class="w-full text-sm font-semibold py-2 transition duration-300 rounded-sm bg-accent-red text-black hover:bg-white mt-4">
+                                <i class="fas fa-plus mr-2"></i> EXECUTE
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- CERTIFICATES LIST CONTAINER -->
+                    <div id="certificates-list" class="space-y-6">
+                        <!-- Certificates will be dynamically injected here -->
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 4. PROJECTS SECTION (Now with Add/Remove functionality) --><section id="page-projects" class="view hidden space-y-10 pt-8 max-w-6xl mx-auto">
+                <h2 class="text-3xl font-bold text-center neon-glow-text tracking-wider pb-2 border-b border-gray-800">
+                    &lt; PROJECTS /&gt;
+                </h2>
+
+                <div class="max-w-2xl mx-auto font-mono">
+                    <!-- ADD NEW PROJECT FORM -->
+                    <div class="card mb-8">
+                        <h3 class="text-xl font-bold mb-4 text-white"><span class="prompt">CMD:</span> ADD\_PROJECT</h3>
+                        <div class="space-y-3">
+                            <input id="new-project-title" type="text" placeholder="Project Title (e.g., DECRYPTOR.EXE)" class="w-full bg-primary-dark border border-gray-700 p-2 text-white placeholder-gray-500 focus:outline-none focus:border-accent-red focus:shadow-[0_0_5px_rgba(255,0,0,0.5)]">
+                            <input id="new-project-detail" type="text" placeholder="Detail (e.g., // Buffer Overflow Research)" class="w-full bg-primary-dark border border-gray-700 p-2 text-white placeholder-gray-500 focus:outline-none focus:border-accent-red focus:shadow-[0_0_5px_rgba(255,0,0,0.5)]">
+                            <textarea id="new-project-description" placeholder="Description (The main purpose of the tool)" class="w-full bg-primary-dark border border-gray-700 p-2 text-white placeholder-gray-500 focus:outline-none focus:border-accent-red focus:shadow-[0_0_5px_rgba(255,0,0,0.5)]"></textarea>
+                            <input id="new-project-link" type="url" placeholder="Repository/Demo Link (Optional)" class="w-full bg-primary-dark border border-gray-700 p-2 text-white placeholder-gray-500 focus:outline-none focus:border-accent-red focus:shadow-[0_0_5px_rgba(255,0,0,0.5)]">
+                            <button onclick="addProject()" class="w-full text-sm font-semibold py-2 transition duration-300 rounded-sm bg-accent-red text-black hover:bg-white mt-4">
+                                <i class="fas fa-plus mr-2"></i> EXECUTE
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- PROJECTS LIST CONTAINER -->
+                    <div id="projects-list" class="space-y-6">
+                        <!-- Projects will be dynamically injected here -->
+                    </div>
+                </div>
+            </section>
+
+
+        </main>
+
+        <!-- Footer (Simulated App Status Bar) -->
+        <footer class="bg-secondary-dark py-3 border-t border-accent-red/50">
+            <div class="px-4 text-center text-gray-600 text-xs font-mono space-y-2 max-w-6xl mx-auto">
+                <div class="flex justify-center space-x-6">
+                    <a href="mailto:your.email@example.com" class="hover:text-accent-red transition duration-200">MAIL</a>
+                    <a href="#" target="_blank" class="hover:text-accent-red transition duration-200">LINKEDIN</a>
+                    <a href="#" target="_blank" class="hover:text-accent-red transition duration-200">GITHUB</a>
+                </div>
+                <p><span class="prompt">STATUS:</span> DEPLOYMENT\_COMPLETE | &copy; 2024</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Firebase Imports -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, onSnapshot, collection, query, addDoc, deleteDoc, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+    </script>
+    
+    <!-- JavaScript for Page Switching and Content Management --><script type="module">
+        
+        // Firebase global instances
+        let db;
+        let auth;
+        let userId; 
+        let appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+
+        // --- GLOBAL DATA STORAGE (Default values, overwritten by Firestore) ---
+        let profile = {
+            objective: "MCA: ERROR, Ethical Hacking."
+        };
+        let certificates = [];
+        let projects = [];
+
+        // --- FIREBASE INITIALIZATION & AUTHENTICATION ---
+        
+        function initFirebase() {
+            try {
+                const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+
+                if (Object.keys(firebaseConfig).length === 0) {
+                    console.error("FIREBASE ERROR: Firebase configuration (__firebase_config) is missing. Cannot initialize persistence.");
+                    // Removed document.getElementById('app-share-id').textContent = 'PERSISTENCE_OFFLINE';
+                    return; 
+                }
+
+                const app = initializeApp(firebaseConfig);
+                db = getFirestore(app);
+                auth = getAuth(app);
+                setLogLevel('debug');
+                console.log("Firebase initialized.");
+
+                onAuthStateChanged(auth, async (user) => {
+                    if (user) {
+                        userId = user.uid;
+                        console.log("Authenticated. User ID:", userId);
+                        // Removed document.getElementById('app-share-id').textContent = appId;
+                        loadAllData(); // Start loading data after auth
+                    } else {
+                        // Sign in anonymously or with custom token
+                        if (typeof __initial_auth_token !== 'undefined') {
+                            await signInWithCustomToken(auth, __initial_auth_token);
+                        } else {
+                            await signInAnonymously(auth);
+                        }
+                    }
+                });
+            } catch(e) {
+                console.error("Failed to initialize Firebase:", e);
+                // Removed document.getElementById('app-share-id').textContent = 'INIT_FAILED';
+            }
+        }
+
+        // --- FIRESTORE DATA PATHS (PUBLICLY SHAREABLE) ---
+
+        // Public path: /artifacts/{appId}/public/data/{collection}/{documentId}
+        function getProfileRef() {
+            // Check for db initialization before accessing
+            if (!db) return null;
+            return doc(db, `artifacts/${appId}/public/data/portfolio_profile/main_profile`);
+        }
+        function getCertificatesCollection() {
+            if (!db) return null;
+            return collection(db, `artifacts/${appId}/public/data/portfolio_certs`);
+        }
+        function getProjectsCollection() {
+            if (!db) return null;
+            return collection(db, `artifacts/${appId}/public/data/portfolio_projects`);
+        }
+
+
+        // --- FIRESTORE DATA LOADING (ON SNAPSHOT) ---
+
+        function loadAllData() {
+            if (!db) return;
+
+            // Load Profile (Single Document)
+            const profileRef = getProfileRef();
+            if (profileRef) {
+                onSnapshot(profileRef, (doc) => {
+                    if (doc.exists()) {
+                        profile.objective = doc.data().objective || profile.objective;
+                    }
+                    renderProfile();
+                }, (error) => { console.error("Error loading profile:", error); });
+            }
+            
+            // Load Certificates (Collection)
+            const certsCollection = getCertificatesCollection();
+            if (certsCollection) {
+                onSnapshot(certsCollection, (snapshot) => {
+                    certificates = snapshot.docs.map(doc => ({ 
+                        id: doc.id, 
+                        ...doc.data() 
+                    })).sort((a, b) => b.timestamp - a.timestamp); // Sort by newest first
+                    renderCertificates();
+                }, (error) => { console.error("Error loading certificates:", error); });
+            }
+
+            // Load Projects (Collection)
+            const projectsCollection = getProjectsCollection();
+            if (projectsCollection) {
+                onSnapshot(projectsCollection, (snapshot) => {
+                    projects = snapshot.docs.map(doc => ({ 
+                        id: doc.id, 
+                        ...doc.data() 
+                    })).sort((a, b) => b.timestamp - a.timestamp); // Sort by newest first
+                    renderProjects();
+                }, (error) => { console.error("Error loading projects:", error); });
+            }
+        }
+
+
+        // --- PAGE SWITCHING (No change) ---
+
+        function showPage(pageId) {
+            const views = document.querySelectorAll('.view');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            views.forEach(view => {
+                view.classList.add('hidden');
+                view.classList.remove('active-fade');
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            const targetView = document.getElementById('page-' + pageId);
+            if (targetView) {
+                targetView.classList.remove('hidden');
+                targetView.classList.add('active-fade');
+            } else {
+                console.error(`View with ID 'page-${pageId}' not found.`);
+            }
+
+            const targetLink = document.getElementById('nav-' + pageId);
+            if (targetLink) {
+                targetLink.classList.add('active');
+            }
+        }
+
+
+        // --- PROFILE MANAGEMENT (Updated for Firestore) ---
+
+        function renderProfile() {
+            const objectiveElement = document.getElementById('profile-objective');
+            if (objectiveElement) {
+                objectiveElement.textContent = profile.objective;
+            }
+        }
+
+        window.showProfileEditor = function() {
+            const editor = document.getElementById('profile-editor');
+            const objectiveInput = document.getElementById('edit-objective');
+            
+            objectiveInput.value = profile.objective;
+            editor.classList.remove('hidden');
+        }
+
+        window.saveProfile = async function() {
+            const objectiveInput = document.getElementById('edit-objective');
+            const newObjective = objectiveInput.value.trim();
+
+            if (newObjective) {
+                profile.objective = newObjective;
+                
+                if (db) {
+                    try {
+                        const profileRef = getProfileRef();
+                        if (profileRef) {
+                            // Save to public path
+                            await setDoc(profileRef, { objective: newObjective });
+                            console.log("Profile objective saved to Firestore.");
+                        } else {
+                             console.error("Cannot save profile: Database not initialized.");
+                        }
+                    } catch (e) {
+                        console.error("Error saving profile to Firestore:", e);
+                    }
+                }
+                document.getElementById('profile-editor').classList.add('hidden');
+            } else {
+                console.error("PROFILE ERROR: Objective cannot be empty.");
+            }
+        }
+
+
+        // --- CERTIFICATE MANAGEMENT (Updated for Firestore) ---
+
+        function renderCertificates() {
+            const listContainer = document.getElementById('certificates-list');
+            if (!listContainer) return;
+
+            listContainer.innerHTML = ''; 
+
+            if (certificates.length === 0) {
+                 listContainer.innerHTML = '<p class="text-center text-gray-500 py-6">No certificates found. Add one to see it here.</p>';
+                 return;
+            }
+
+            certificates.forEach((cert) => {
+                const certHtml = `
+                    <div class="card p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center transition duration-300 transform hover:scale-[1.02] border-l-4 border-gray-700 hover:border-accent-red">
+                        <div class="mb-4 sm:mb-0">
+                            <h3 class="text-xl font-semibold mb-1 text-white flex items-center">
+                                <i class="fas fa-certificate mr-2 text-accent-red"></i> ${cert.title}
+                            </h3>
+                            <p class="text-sm text-gray-400 mb-3">${cert.detail}</p>
+                            <a href="${cert.link}" target="_blank" class="text-accent-red hover:text-white font-medium text-sm transition duration-200">
+                                VERIFY\_ID <i class="fas fa-external-link-alt ml-1"></i>
+                            </a>
+                        </div>
+                        <button onclick="removeCertificate('${cert.id}')" title="Remove Certificate" class="text-gray-500 hover:text-accent-red transition duration-200 ml-0 sm:ml-4 p-2 rounded-full border border-gray-700 hover:border-accent-red self-end sm:self-center">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                `;
+                listContainer.innerHTML += certHtml;
+            });
+        }
+
+        window.addCertificate = async function() {
+            const titleInput = document.getElementById('new-cert-title');
+            const detailInput = document.getElementById('new-cert-detail');
+            const linkInput = document.getElementById('new-cert-link');
+
+            const title = titleInput.value.trim();
+            const detail = "// " + detailInput.value.trim(); 
+            const link = linkInput.value.trim() || '#'; 
+
+            if (title) {
+                if (db) {
+                    try {
+                        const certsCollection = getCertificatesCollection();
+                         if (certsCollection) {
+                            await addDoc(certsCollection, {
+                                title,
+                                detail,
+                                link,
+                                timestamp: Date.now()
+                            });
+                            console.log("Certificate added to Firestore.");
+                         } else {
+                            console.error("Cannot add certificate: Database not initialized.");
+                         }
+                    } catch (e) {
+                        console.error("Error adding certificate:", e);
+                    }
+                } 
+                
+                titleInput.value = '';
+                detailInput.value = '';
+                linkInput.value = '';
+            } else {
+                console.error("CERTIFICATE ERROR: Title is mandatory for execution.");
+            }
+        }
+
+        window.removeCertificate = async function(id) {
+            if (db) {
+                try {
+                    const certsCollection = getCertificatesCollection();
+                    if (certsCollection) {
+                        await deleteDoc(doc(certsCollection, id));
+                        console.log("Certificate removed from Firestore.");
+                    } else {
+                        console.error("Cannot remove certificate: Database not initialized.");
+                    }
+                } catch (e) {
+                    console.error("Error removing certificate:", e);
+                }
+            }
+        }
+
+
+        // --- PROJECTS MANAGEMENT (Updated for Firestore) ---
+
+        function renderProjects() {
+            const listContainer = document.getElementById('projects-list');
+            if (!listContainer) return;
+
+            listContainer.innerHTML = ''; 
+
+            if (projects.length === 0) {
+                 listContainer.innerHTML = '<p class="text-center text-gray-500 py-6">No projects found. Add one to see it here.</p>';
+                 return;
+            }
+
+            projects.forEach(project => {
+                const projectHtml = `
+                    <div class="card flex flex-col justify-between p-6 transition duration-300 transform hover:scale-[1.02] border-l-4 border-gray-700 hover:border-accent-red">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="flex-1">
+                                <h3 class="text-xl font-semibold mb-2 text-white flex items-center">
+                                    <span class="prompt">$</span> ${project.title}
+                                </h3>
+                                <p class="text-xs font-medium text-gray-500 mb-3">${project.detail}</p>
+                            </div>
+                            <button onclick="removeProject('${project.id}')" title="Remove Project" class="text-gray-500 hover:text-accent-red transition duration-200 ml-4 p-1 rounded-full border border-gray-700 hover:border-accent-red">
+                                <i class="fas fa-trash-alt text-sm"></i>
+                            </button>
+                        </div>
+                        
+                        <p class="text-gray-400 mb-4 text-sm">${project.description}</p>
+                        
+                        <a href="${project.link}" target="_blank" class="text-accent-red hover:text-white font-medium text-sm transition duration-200">
+                            OPEN\_REPO <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                `;
+                listContainer.innerHTML += projectHtml;
+            });
+        }
+
+        window.addProject = async function() {
+            const titleInput = document.getElementById('new-project-title');
+            const detailInput = document.getElementById('new-project-detail');
+            const descriptionInput = document.getElementById('new-project-description');
+            const linkInput = document.getElementById('new-project-link');
+
+            const title = titleInput.value.trim();
+            const detail = detailInput.value.trim() || "// Uncategorized Tool";
+            const description = descriptionInput.value.trim(); 
+            const link = linkInput.value.trim() || '#'; 
+
+            if (title && description) {
+                if (db) {
+                    try {
+                        const projectsCollection = getProjectsCollection();
+                        if (projectsCollection) {
+                            await addDoc(projectsCollection, { 
+                                title, 
+                                detail, 
+                                description, 
+                                link,
+                                timestamp: Date.now()
+                            });
+                            console.log("Project added to Firestore.");
+                        } else {
+                            console.error("Cannot add project: Database not initialized.");
+                        }
+                    } catch (e) {
+                        console.error("Error adding project:", e);
+                    }
+                }
+
+                titleInput.value = '';
+                detailInput.value = '';
+                descriptionInput.value = '';
+                linkInput.value = '';
+            } else {
+                console.error("PROJECT ERROR: Title and Description are mandatory for execution.");
+            }
+        }
+
+        window.removeProject = async function(id) {
+            if (db) {
+                try {
+                    const projectsCollection = getProjectsCollection();
+                    if (projectsCollection) {
+                        await deleteDoc(doc(projectsCollection, id));
+                        console.log("Project removed from Firestore.");
+                    } else {
+                        console.error("Cannot remove project: Database not initialized.");
+                    }
+                } catch (e) {
+                    console.error("Error removing project:", e);
+                }
+            }
+        }
+
+
+        // --- INITIALIZATION ---
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showPage('home'); 
+            initFirebase(); 
+        });
+
+        // Expose functions globally for HTML onclick attributes
+        window.showPage = showPage;
+        window.renderCertificates = renderCertificates;
+        window.renderProjects = renderProjects;
+        window.removeCertificate = removeCertificate;
+        window.removeProject = removeProject;
+
+    </script>
+</body>
+</html>
